@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spin Wheel Undian</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>🎡 Spin Wheel Undian</h1>
+    <div class="controls">
+      <label>Durasi putaran
+        <input id="dur" type="number" min="1" max="120" value="10"> detik
+      </label>
+      <label class="chk"><input type="checkbox" id="fz"> Tampilkan 1/16 lingkaran atas</label>
+      <button id="reset" class="btn">↺ Reset</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <div class="wheel" id="wheel">
+        <canvas id="cv" width="800" height="800"></canvas>
+        <button id="go">PUTAR</button>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="tabs">
+        <button class="tab active" data-tab="entries">Entri <span class="badge" id="cEntries">0</span></button>
+        <button class="tab" data-tab="results">Hasil <span class="badge" id="cResults">0</span></button>
+      </div>
+      <div id="entryTools" class="tools">
+        <textarea id="newNames" rows="3" placeholder="Tulis nama, satu per baris&#10;Boleh dengan bobot, contoh: Budi, 2"></textarea>
+        <div class="tools-row">
+          <button class="btn primary" id="addBtn">+ Tambah</button>
+          <button class="btn" id="clearBtn">Hapus semua</button>
+          <button class="btn" id="defaultBtn">Data awal</button>
+        </div>
+      </div>
+      <ol id="lEntries" class="list"></ol>
+      <ol id="lResults" class="list" hidden></ol>
+      <p id="emptyResults" class="empty" hidden>Belum ada pemenang.</p>
+    </aside>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="card">
+      <div class="card-head">Kita punya pemenang!</div>
+      <div class="card-body" id="mName"></div>
+      <div class="card-foot"><button class="btn primary" id="close">Tutup</button></div>
+    </div>
+  </div>
+
+  <canvas id="confetti"></canvas>
+
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src="js/confetti.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
